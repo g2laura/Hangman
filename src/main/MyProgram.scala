@@ -33,15 +33,17 @@ object MyProgram {
   }
   
   // Verify if the fruit name contains the letter selected by the user
-  def checkLetter(letter: String, fruitToGuess: Array[String]) {
+  def checkLetter(letter: String, fruitToGuess: Array[String]): Boolean = {
     if (randomFruit.contains(letter)) {
       // Replace the letter who matches
       for ((randomFruitChar, index) <- randomFruit.zipWithIndex) {
         if(randomFruitChar.toString() == letter) fruitToGuess.update(index, letter)
       }
       if (!isWinner(fruitToGuess)) println("Correct! " + fruitToGuess.mkString(" "))
+      return true
     } else {
       println("Incorrect, try again: " + fruitToGuess.mkString(" "))
+      return false
     }
   }
   
